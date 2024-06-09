@@ -23,7 +23,6 @@ spec:
       volumes:
       - name: rabbitmq-storage
         emptyDir: {}
-
 ---
 apiVersion: v1
 kind: Service
