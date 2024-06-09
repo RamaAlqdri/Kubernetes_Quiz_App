@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: mongodb
 spec:
@@ -19,24 +19,22 @@ spec:
         ports:
         - containerPort: 27017
         volumeMounts:
-        - name: mongodb-persistent-storage
+        - name: mongodb-storage
           mountPath: /data/db
-  volumeClaimTemplates:
-  - metadata:
-      name: mongodb-persistent-storage
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 10Gi
+      volumes:
+      - name: mongodb-storage
+        emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongodb
+  name: mongodb-service
 spec:
-  ports:
-  - port: 27017
   selector:
     app: mongodb
-  clusterIP: None
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
+  type: ClusterIP
+

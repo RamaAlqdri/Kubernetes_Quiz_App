@@ -17,6 +17,13 @@ spec:
         image: ramadhanialqadri12/quiz-app.grading:latest
         ports:
         - containerPort: 3001
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
 ---
 apiVersion: v1
 kind: Service

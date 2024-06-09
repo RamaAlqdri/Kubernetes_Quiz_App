@@ -21,22 +21,20 @@ spec:
         volumeMounts:
         - name: rabbitmq-persistent-storage
           mountPath: /var/lib/rabbitmq
-  volumeClaimTemplates:
-  - metadata:
-      name: rabbitmq-persistent-storage
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 10Gi
+      volumes:
+      - name: rabbitmq-storage
+        emptyDir: {}
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: rabbitmq
+  name: rabbitmq-service
 spec:
-  ports:
-  - port: 5672
   selector:
     app: rabbitmq
-  clusterIP: None
+  ports:
+    - protocol: TCP
+      port: 5672
+      targetPort: 5672
+  type: ClusterIP
