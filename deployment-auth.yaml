@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: auth
-        image: ramadhanialqadri12/quiz-app.auth:latest
+        image: dwf19/quiz-app_auth:latest
         ports:
         - containerPort: 3002
         resources:

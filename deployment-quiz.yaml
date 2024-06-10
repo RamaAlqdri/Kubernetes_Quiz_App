@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: quiz
-        image: ramadhanialqadri12/quiz-app.quiz:latest
+        image: dwf19/quiz-app_quiz:latest
         ports:
         - containerPort: 3000
         resources:

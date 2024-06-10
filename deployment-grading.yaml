@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: grading
-        image: ramadhanialqadri12/quiz-app.grading:latest
+        image: dwf19/quiz-app_grading:latest
         ports:
         - containerPort: 3001
         resources:
