@@ -37,3 +37,4 @@ spec:
       port: 80
       targetPort: 3002
   type: LoadBalancer
+  externalTrafficPolicy: Cluster
