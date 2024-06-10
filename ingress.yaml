@@ -4,6 +4,10 @@ metadata:
   name: quiz-app-ingress
   annotations:
     kubernetes.io/ingress.class: "gce"
+    nginx.ingress.kubernetes.io/enable-cors: "true"  # Aktifkan CORS
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"  # Izinkan semua origin (harap diatur sesuai kebutuhan)
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"  # Izinkan metode HTTP yang diinginkan
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"  # Izinkan kredensial dalam CORS
 spec:
   ingressClassName: gce
   rules:
